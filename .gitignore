@@ -1,0 +1,56 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor folders
+.vscode/
+.idea/
+
+# Logs and local diagnostics
+*.log
+logs/
+reports/
+crash-dumps/
+
+# Local runtime data and secrets
+.env
+.env.*
+.runtime/
+runtime/
+user-data/
+session-data/
+*.local.json
+bot-auth.local.json
+config.json
+owned-songs.json
+
+# Node/Electron dependencies and caches
+node_modules/
+.cache/
+.npm/
+npm-cache/
+electron-cache/
+electron-builder-cache/
+
+# Build and release output
+build/
+dist/
+out/
+release/
+releases/
+artifacts/
+*.zip
+*.exe
+*.blockmap
+latest.yml
+SHA256SUMS.txt
+SHA256SUMS.json
+
+# Temporary files
+tmp/
+.tmp/
+*.tmp
+*.temp
+*.bak
+*.old
