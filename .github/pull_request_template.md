@@ -4,11 +4,12 @@
 
 ## Scope Check
 
-- [ ] This PR does not include private development history.
-- [ ] This PR does not include secrets, credentials, private configuration, internal notes, local machine files, generated junk, or obsolete implementation material.
-- [ ] Release artifacts, if any, are attached to a GitHub Release instead of committed directly to the repository.
+- [ ] This PR is about Steve's Music Requests / Twitch Requests.
+- [ ] This PR does not include unrelated backend/accounting project material.
+- [ ] This PR does not include Twitch tokens, local runtime data, logs, generated artifacts, private config, or private development history.
+- [ ] Release artifacts, if any, are attached to a GitHub Release instead of committed directly.
 
-## Owner Review
+## Validation
 
-- [ ] Product facts are verified.
-- [ ] Privacy, terms, security, and license wording are reviewed where relevant.
+- [ ] Product facts are verified against the current release source.
+- [ ] Install/use documentation is still concise and user-focused.
