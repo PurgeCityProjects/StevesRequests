@@ -10,16 +10,30 @@ Desktop.ini
 # Logs and local diagnostics
 *.log
 logs/
+reports/
+crash-dumps/
 
-# Local environment and secrets
+# Local runtime data and secrets
 .env
 .env.*
-*.pem
-*.key
-*.p12
-*.pfx
+.runtime/
+runtime/
+user-data/
+session-data/
+*.local.json
+bot-auth.local.json
+config.json
+owned-songs.json
 
-# Build and package output
+# Node/Electron dependencies and caches
+node_modules/
+.cache/
+.npm/
+npm-cache/
+electron-cache/
+electron-builder-cache/
+
+# Build and release output
 build/
 dist/
 out/
@@ -27,19 +41,16 @@ release/
 releases/
 artifacts/
 *.zip
-*.tar.gz
-*.7z
 *.exe
-*.msi
-*.dmg
-*.pkg
-*.deb
-*.rpm
+*.blockmap
+latest.yml
+SHA256SUMS.txt
+SHA256SUMS.json
 
-# Dependencies and caches
-node_modules/
-__pycache__/
-*.pyc
-.cache/
-.tmp/
+# Temporary files
 tmp/
+.tmp/
+*.tmp
+*.temp
+*.bak
+*.old
