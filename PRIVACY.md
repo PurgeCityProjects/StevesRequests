@@ -20,9 +20,9 @@ Verified categories handled by the backend include:
 
 ## Local Storage
 
-The backend stores application data in PostgreSQL. The inspected development workspace also contains a local PostgreSQL data directory and PostgreSQL log files.
+The backend stores application data in PostgreSQL. Operators configure deployment-specific settings through environment variables or `api/.env`, using the release package's `api/.env.example` as the safe template.
 
-The backend reads environment configuration through environment variables and `.env` support. The `.env` file can contain database credentials, API keys, manager keys, Discord configuration, and webhook URLs.
+The release package is designed not to include real `.env` files, live PostgreSQL data directories, database dumps, logs, or backups.
 
 TODO: OWNER REVIEW REQUIRED - Confirm the final public deployment storage locations for packaged releases.
 
@@ -35,7 +35,7 @@ Verified network behavior includes:
 - Optional Discord integration verifies Discord interaction signatures when configured.
 - Optional scheduled report delivery posts report text to a configured Discord webhook URL.
 - Media stream health checks make outbound HTTP requests to operator-configured stream URLs and playlist URLs.
-- Development notes reference use of a Cloudflare tunnel to expose a local backend to in-world scripts, but no public production hosting model is confirmed.
+- Operators may expose the backend through a production host or tunnel so in-world scripts can reach it; the public production hosting model is not yet fixed.
 
 No verified Twitch or OBS integration was found in the inspected current implementation.
 
@@ -53,10 +53,11 @@ Users and operators should protect:
 - Discord webhook URLs, public keys, application IDs, guild IDs, allowed role IDs, and allowed user IDs.
 - Public tunnel URLs or deployment URLs that are tied to private deployments.
 - Database backups and logs that contain avatar, payment, session, or device data.
+- API keys copied into LSL scripts for in-world object communication.
 
 ## Logs
 
-Verified logging behavior includes backend messages printed to the server terminal and PostgreSQL logs in the development data directory. The development workspace also contains historical patch/update diagnostic logs.
+Verified logging behavior includes backend messages printed to the server terminal and PostgreSQL logs in the development data directory. Public release packages are designed to exclude logs.
 
 TODO: OWNER REVIEW REQUIRED - Confirm final packaged-release log locations and retention behavior.
 
