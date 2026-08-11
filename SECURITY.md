@@ -30,6 +30,12 @@ Protect the following configuration and runtime data:
 - Device live claim tokens, runtime object keys, and API configuration embedded in in-world scripts.
 - Logs or database exports containing avatar identifiers, names, payment/accounting records, session data, rental data, or device state.
 
+## Release Package Controls
+
+The private development release builder stages a ZIP artifact and audits it before publication. The candidate audit verified exclusion of `.git`, real `.env` files, live database data, database dumps, logs, caches, virtual environments, patch backups, generated internal artifact packs, and known private secret patterns.
+
+The LSL connection scripts were changed for release readiness so they use deployment placeholders rather than hard-coded production endpoint/API-key values, and the connection script no longer prints the API key in owner chat.
+
 ## Backend Exposure
 
 The backend exposes HTTP API endpoints for in-world scripts and operator/admin workflows. Write and manager/report endpoints require API-key headers in the implementation, but deployment operators are still responsible for protecting the backend URL, API keys, database, and hosting environment.
