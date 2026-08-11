@@ -1,49 +1,24 @@
 # Changelog
 
-All notable public changes to SteveRequests should be documented in this file.
-
-This project should follow a clear, dated changelog format for public releases. Do not fabricate historical versions.
+All notable public changes to Steve's Music Requests should be documented here.
 
 ## [Unreleased]
 
 ### Added
 
-- Established the public release repository structure for SteveRequests.
-- Added verified public documentation for the current backend-centered Second Life/OpenSim accounting and device-management implementation.
-- Documented verified runtime components, configuration names, data-handling categories, third-party integration points, and security-sensitive operator configuration.
-- Documented the verified ZIP source-distribution release model, canonical application version source, safe configuration template, and release package audit controls.
+- Prepared the public release/support repository for the Windows desktop app.
+- Added concise installation, support, privacy, security, terms, and contribution guidance.
+- Documented the current release source branch and Windows installer/zip release model.
 
-### Changed
+### Corrected
 
-- Replaced the placeholder README with public release, support, and distribution guidance.
-- Clarified that no real public release has been published yet and that `0.0.0+unreleased` is an unreleased development sentinel, not a release tag.
-- Clarified that public installation uses the generated ZIP artifact, `api/.env.example`, `api/requirements.txt`, PostgreSQL setup, SQL seed files, and included LSL scripts.
-- Updated security and privacy documentation to reflect release-package exclusions and LSL connection placeholder cleanup.
+- Removed incorrect documentation from an unrelated backend/accounting project.
+- Replaced it with verified Twitch Requests / Steve's Music Requests facts from `Renalynn217/Twitch-Requests` branch `agent/fix-now-playing-auto-resolution`.
 
-### Removed
+## Current Source Baseline
 
-- Removed the unverified open-source license file from the proposed public release structure pending owner review.
-
-## Release Entry Template
-
-Use this template when publishing the first real public release:
-
-```markdown
-## [x.y.z] - YYYY-MM-DD
-
-### Added
-
-- ...
-
-### Changed
-
-- ...
-
-### Fixed
-
-- ...
-
-### Security
-
-- ...
-```
+- Source repo: `Renalynn217/Twitch-Requests`
+- Source branch: `agent/fix-now-playing-auto-resolution`
+- Source commit: `ed08bc3fee71945f107b225e8b1d6df6dc8680d4`
+- Version source: `package.json`
+- Current inspected version: `0.1.0`
