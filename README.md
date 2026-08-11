@@ -6,9 +6,20 @@ This repository is the public distribution and support surface for SteveRequests
 
 ## What Is SteveRequests?
 
-TODO: OWNER REVIEW REQUIRED - Add a concise, verified product description before the first public release.
+SteveRequests is a backend-centered Second Life/OpenSim accounting and device-management system. The current implementation uses a FastAPI backend with PostgreSQL storage and LSL scripts for in-world objects.
 
-Do not infer product functionality from this repository until that description is completed by the owner.
+Verified user-facing areas in the current implementation include:
+
+- Device registration, bootstrap, heartbeat, configuration, and update manifest/version-map endpoints for in-world objects.
+- Tip jar session tracking for manager, DJ, host, and dancer roles.
+- Tip, donation, payout, refund, rent, rental unit, lease, renter, and manager-withdrawal accounting records.
+- Admin and manager role management.
+- Rental terminal, donation terminal, adboard terminal, and tip jar device types.
+- Media/radio station state and stream health checks.
+- Staff, income, open-session, and accounting reports.
+- Optional Discord interaction/report integration when configured by the operator.
+
+This README describes what users and operators need to know about public releases. It does not document private development architecture, internal history, or private deployment configuration.
 
 ## Official Releases
 
@@ -18,7 +29,7 @@ Official SteveRequests releases should be obtained only from this repository's G
 
 Do not download SteveRequests installers, binaries, packages, or archives from unofficial mirrors, private links, chat attachments, or third-party redistribution sites unless Purge City Projects explicitly identifies them as official.
 
-At the time this repository structure was created, no public release version is documented here. Do not create a version tag or GitHub Release until real release artifacts and release notes are ready.
+At the time this repository structure was created, no application-level public release version is documented here. The development project contains script-family version maps for LSL components, but those are not a public application release version. Do not create a version tag or GitHub Release until real release artifacts and release notes are ready.
 
 ## Release Model
 
@@ -29,16 +40,18 @@ A normal public release should include:
 1. A version tag.
 2. A GitHub Release created from that tag.
 3. Release notes describing the user-facing changes.
-4. Downloadable release artifact(s), such as installers, binaries, or packages.
+4. Downloadable release artifact(s), such as installers, deployment archives, or packages.
 5. A matching entry in [CHANGELOG.md](CHANGELOG.md).
 
 Release artifacts should be attached to GitHub Releases. They should not be committed directly into the repository unless there is a specific documented reason.
+
+TODO: OWNER REVIEW REQUIRED - Confirm the exact public release artifact format before the first release.
 
 ## Installation
 
 See [docs/installation.md](docs/installation.md).
 
-Installation details are intentionally marked as TODO until the actual public release package format is confirmed.
+The current implementation is a backend service plus database and in-world scripts. No verified public installer or packaged end-user release artifact exists yet.
 
 ## Support And Feedback
 
