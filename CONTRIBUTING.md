@@ -1,25 +1,23 @@
 # Contributing
 
-SteveRequests is maintained by Purge City Projects.
+Steve's Music Requests is maintained by PurgeCityProjects.
 
-This public repository is intended for releases, documentation, support, and public issue tracking. It is not the private development/source-of-truth repository.
+This public repository is intended for releases, documentation, policies, support, and public issue tracking.
 
 ## Issues
 
-Use GitHub Issues for reproducible bug reports and feature requests. Choose the matching issue template and remove sensitive information before submitting.
+Use GitHub Issues for reproducible bugs and feature requests. Remove sensitive data before posting.
 
-For bugs, identify whether the problem is with backend startup, PostgreSQL/database access, Second Life/OpenSim object scripts, device bootstrap/heartbeat, tip jars, rental terminals, adboards, Discord integration, media streams, reporting, or release packaging.
+Bug reports should identify the affected area: Twitch auth/chat/EventSub, song requests, Mixxx, OBS Browser Sources, Now Playing, announcements, event queue, alerts, Quick Actions, character output, audio, install/update, or runtime folder setup.
 
 ## Pull Requests
 
 TODO: OWNER REVIEW REQUIRED - Confirm whether public pull requests are accepted and for what scope.
 
-Until that policy is confirmed, public pull requests should be limited to documentation corrections or other changes explicitly requested by Purge City Projects.
+Until that policy is confirmed, public pull requests should be limited to documentation corrections or other changes explicitly requested by PurgeCityProjects.
 
-Do not submit private development history, credentials, private configuration, internal notes, generated junk files, local machine files, database directories, logs, obsolete implementation material, or development-only artifacts.
+Do not submit private development history, Twitch tokens, local runtime data, logs, generated release artifacts, private configuration, or third-party assets you do not have rights to redistribute.
 
-## Release Work
+## Release Artifacts
 
-Release artifacts should be published through GitHub Releases, not committed directly to the repository.
-
-Do not commit installers, archives, database dumps, environment files, or generated release outputs unless Purge City Projects explicitly documents that they belong in the public repository.
+Release artifacts belong on GitHub Releases. Do not commit installers, zips, runtime folders, logs, caches, or generated build output directly to the repository.
