@@ -1,0 +1,45 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor folders
+.vscode/
+.idea/
+
+# Logs and local diagnostics
+*.log
+logs/
+
+# Local environment and secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Build and package output
+build/
+dist/
+out/
+release/
+releases/
+artifacts/
+*.zip
+*.tar.gz
+*.7z
+*.exe
+*.msi
+*.dmg
+*.pkg
+*.deb
+*.rpm
+
+# Dependencies and caches
+node_modules/
+__pycache__/
+*.pyc
+.cache/
+.tmp/
+tmp/
