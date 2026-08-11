@@ -1,79 +1,49 @@
-# SteveRequests
+# Steve's Music Requests
 
-SteveRequests is the official public release and support repository for SteveRequests, maintained by Purge City Projects.
+Steve's Music Requests is a Windows desktop companion from PurgeCityProjects for Twitch song requests, Mixxx workflows, OBS Browser Sources, Now Playing, viewer rewards, stream alerts, announcements, Quick Actions, and optional VRM character output.
 
-This repository is the public distribution and support surface for SteveRequests. It is not the private development or source-of-truth repository. Development history, internal implementation work, private configuration, credentials, and development-only material are intentionally not published here.
+This repository is the public release, documentation, policy, and support home for Steve's Music Requests. The current release source is `Renalynn217/Twitch-Requests` branch `agent/fix-now-playing-auto-resolution` at commit `ed08bc3fee71945f107b225e8b1d6df6dc8680d4`.
 
-## What Is SteveRequests?
+## What It Does
 
-SteveRequests is a backend-centered Second Life/OpenSim accounting and device-management system. The current implementation uses a FastAPI backend with PostgreSQL storage and LSL scripts for in-world objects.
+- Connects to Twitch chat and Twitch EventSub for chat messages, Channel Point redemptions, and stream events.
+- Handles song requests from chat or Channel Point rewards.
+- Integrates with a separately installed stock Mixxx setup for music-library and queue workflows.
+- Publishes local OBS Browser Source outputs, including Now Playing, announcements, event queue, alerts, and character output.
+- Stores setup, Twitch authorization, logs, user configuration, and runtime data locally on the user's machine.
 
-Verified user-facing areas in the current implementation include:
+## Install
 
-- Device registration, bootstrap, heartbeat, configuration, and update manifest/version-map endpoints for in-world objects.
-- Tip jar session tracking for manager, DJ, host, and dancer roles.
-- Tip, donation, payout, refund, rent, rental unit, lease, renter, and manager-withdrawal accounting records.
-- Admin and manager role management.
-- Rental terminal, donation terminal, adboard terminal, and tip jar device types.
-- Media/radio station state and stream health checks.
-- Staff, income, open-session, and accounting reports.
-- Optional Discord interaction/report integration when configured by the operator.
-
-This README describes what users and operators need to know about public releases. It does not document private development architecture, internal history, or private deployment configuration.
-
-## Official Releases
-
-Official SteveRequests releases should be obtained only from this repository's GitHub Releases page:
+Use the official Windows release artifact from GitHub Releases when available:
 
 <https://github.com/PurgeCityProjects/StevesRequests/releases>
 
-Do not download SteveRequests installers, binaries, packages, or archives from unofficial mirrors, private links, chat attachments, or third-party redistribution sites unless Purge City Projects explicitly identifies them as official.
+Preferred artifact: `Steves-Music-Requests-<version>-x64-win.exe`
 
-At the time this repository structure was created, no real public release has been published. The private development workspace now has an application-level version source in `api/main.py` (`__version__`), currently set to the unreleased sentinel `0.0.0+unreleased`. Do not create a version tag or GitHub Release from that sentinel.
+Zip fallback: `Steves-Music-Requests-<version>-x64-win.zip`
 
-## Release Model
+See [docs/installation.md](docs/installation.md) for the short install and first-run guide.
 
-SteveRequests public distribution is intended to use GitHub Releases.
+## First Run
 
-The current verified release artifact model is a versioned ZIP source distribution. That matches the actual architecture: a Python FastAPI backend, PostgreSQL initialization/seed SQL, and LSL scripts that operators deploy into Second Life/OpenSim objects. A single desktop executable is not the current release model.
+1. Launch Steve's Music Requests.
+2. Connect your Twitch channel and authorize Twitch.
+3. Choose and scan your music-library folder.
+4. Install/configure stock Mixxx if you use Mixxx request workflows.
+5. Copy the OBS Browser Source URLs for the outputs you want.
+6. Add your own character assets if you use Character Output.
 
-A normal public release should include:
+## Build Facts
 
-1. A real application version set in the canonical version source.
-2. A version tag for that release.
-3. A GitHub Release created from that tag.
-4. Release notes describing user-facing changes and upgrade requirements.
-5. The generated ZIP release artifact attached to the GitHub Release.
-6. A matching entry in [CHANGELOG.md](CHANGELOG.md).
+- Runtime: Electron / Node.js.
+- Version source: `package.json` (`0.1.0` in the inspected release branch).
+- Release command in source: `npm run release:win`.
+- Windows packaging: Electron Builder NSIS installer plus zip fallback.
 
-Release artifacts should be attached to GitHub Releases. They should not be committed directly into the repository unless there is a specific documented reason.
+## Support
 
-## Installation
+Use GitHub Issues for reproducible bugs and feature requests. Do not post Twitch tokens, OAuth data, logs with private data, music-library paths you want private, or other sensitive information.
 
-See [docs/installation.md](docs/installation.md).
+## License
 
-The current implementation is a backend service plus database and in-world scripts. Public installation is designed around extracting the official ZIP artifact, configuring `api/.env` from `api/.env.example`, installing Python dependencies from `api/requirements.txt`, initializing PostgreSQL, and deploying the included LSL scripts.
-
-## Support And Feedback
-
-Use GitHub Issues for reproducible bugs and feature requests:
-
-- Read [SUPPORT.md](SUPPORT.md) before opening an issue.
-- Use the bug report template for defects.
-- Use the feature request template for new behavior or workflow requests.
-
-Do not include credentials, API keys, tokens, private account data, private logs, or personal information in public issues.
-
-## Policies
-
-- [Privacy](PRIVACY.md)
-- [Terms](TERMS.md)
-- [Security](SECURITY.md)
-- [Support](SUPPORT.md)
-- [Changelog](CHANGELOG.md)
-
-## License And Rights
-
-TODO: OWNER REVIEW REQUIRED - Confirm the intended software license before the first public release.
-
-This repository is public, but public visibility alone does not grant permission to redistribute, modify, repackage, sell, or create derivative works from SteveRequests. Do not assume open-source rights unless a verified license file or release terms are added by Purge City Projects.
+Steve's Music Requests is licensed under the [MIT License](LICENSE). Third-party components keep their own licenses.
