@@ -1,45 +1,43 @@
 ---
 name: Bug report
-about: Report a reproducible problem with SteveRequests
+about: Report a reproducible Steve's Music Requests problem
 title: "[Bug]: "
 labels: bug
 assignees: ""
 ---
 
-## SteveRequests Version
+## Version
 
-<!-- Include the exact version from GitHub Releases, if available. -->
+<!-- Release version or artifact name, for example Steves-Music-Requests-0.1.0-x64-win.exe -->
 
-## Operating System / Environment
+## Windows / Install Type
 
-<!-- Include OS version, runtime environment, or hosting context as applicable. -->
+<!-- Windows version, and whether you used the installer or zip fallback. -->
+
+## Affected Area
+
+<!-- Twitch, song requests, Mixxx, OBS Browser Source, Now Playing, announcements, event queue, alerts, Quick Actions, character output, audio, install/update, runtime folder, or other. -->
 
 ## Expected Behavior
 
-<!-- What did you expect to happen? -->
 
 ## Actual Behavior
 
-<!-- What happened instead? -->
 
-## Reproduction Steps
+## Steps To Reproduce
 
 1. 
 2. 
 3. 
 
-## Relevant Logs Or Errors
+## Relevant Logs Or Screenshots
 
-<!-- Paste relevant logs or errors here. Remove secrets, API keys, tokens, personal information, and private data before submitting. -->
+<!-- Paste only the relevant excerpt. Remove Twitch tokens, auth files, private paths, and personal data. -->
 
 ```text
 
 ```
 
-## Screenshots
-
-<!-- Add screenshots if they help explain the issue. Remove or redact sensitive information first. -->
-
 ## Sensitive Information Check
 
-- [ ] I have removed secrets, API keys, access tokens, personal information, private account data, and other sensitive details from this report.
+- [ ] I removed Twitch tokens, authorization data, private runtime data, full logs, and private local paths I do not want public.
