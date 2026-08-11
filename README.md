@@ -29,29 +29,30 @@ Official SteveRequests releases should be obtained only from this repository's G
 
 Do not download SteveRequests installers, binaries, packages, or archives from unofficial mirrors, private links, chat attachments, or third-party redistribution sites unless Purge City Projects explicitly identifies them as official.
 
-At the time this repository structure was created, no application-level public release version is documented here. The development project contains script-family version maps for LSL components, but those are not a public application release version. Do not create a version tag or GitHub Release until real release artifacts and release notes are ready.
+At the time this repository structure was created, no real public release has been published. The private development workspace now has an application-level version source in `api/main.py` (`__version__`), currently set to the unreleased sentinel `0.0.0+unreleased`. Do not create a version tag or GitHub Release from that sentinel.
 
 ## Release Model
 
 SteveRequests public distribution is intended to use GitHub Releases.
 
+The current verified release artifact model is a versioned ZIP source distribution. That matches the actual architecture: a Python FastAPI backend, PostgreSQL initialization/seed SQL, and LSL scripts that operators deploy into Second Life/OpenSim objects. A single desktop executable is not the current release model.
+
 A normal public release should include:
 
-1. A version tag.
-2. A GitHub Release created from that tag.
-3. Release notes describing the user-facing changes.
-4. Downloadable release artifact(s), such as installers, deployment archives, or packages.
-5. A matching entry in [CHANGELOG.md](CHANGELOG.md).
+1. A real application version set in the canonical version source.
+2. A version tag for that release.
+3. A GitHub Release created from that tag.
+4. Release notes describing user-facing changes and upgrade requirements.
+5. The generated ZIP release artifact attached to the GitHub Release.
+6. A matching entry in [CHANGELOG.md](CHANGELOG.md).
 
 Release artifacts should be attached to GitHub Releases. They should not be committed directly into the repository unless there is a specific documented reason.
-
-TODO: OWNER REVIEW REQUIRED - Confirm the exact public release artifact format before the first release.
 
 ## Installation
 
 See [docs/installation.md](docs/installation.md).
 
-The current implementation is a backend service plus database and in-world scripts. No verified public installer or packaged end-user release artifact exists yet.
+The current implementation is a backend service plus database and in-world scripts. Public installation is designed around extracting the official ZIP artifact, configuring `api/.env` from `api/.env.example`, installing Python dependencies from `api/requirements.txt`, initializing PostgreSQL, and deploying the included LSL scripts.
 
 ## Support And Feedback
 
