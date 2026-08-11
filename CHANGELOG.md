@@ -12,7 +12,7 @@ All notable public changes to Steve's Music Requests should be documented here.
 
 ### Corrected
 
-- Removed incorrect documentation from an unrelated backend/accounting project.
+- Removed incorrect documentation from an unrelated application.
 - Replaced it with verified Twitch Requests / Steve's Music Requests facts from `Renalynn217/Twitch-Requests` branch `agent/fix-now-playing-auto-resolution`.
 
 ## Current Source Baseline
