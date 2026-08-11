@@ -1,23 +1,24 @@
 ---
 name: Feature request
-about: Suggest an improvement or new behavior for SteveRequests
+about: Suggest an improvement for Steve's Music Requests
 title: "[Feature]: "
 labels: enhancement
 assignees: ""
 ---
 
+## Area
+
+<!-- Twitch, requests, Mixxx, OBS, Now Playing, announcements, event queue, alerts, Quick Actions, character output, audio, install/update, or other. -->
+
 ## Problem Or Use Case
 
-<!-- What problem would this solve, or what workflow would it improve? -->
 
 ## Proposed Behavior
 
-<!-- What would you like SteveRequests to do? -->
 
 ## Alternatives Considered
 
-<!-- What alternatives or workarounds have you considered? -->
 
 ## Additional Context
 
-<!-- Add any other relevant context, screenshots, examples, or constraints. Do not include credentials, private account data, or other sensitive information. -->
+<!-- Do not include Twitch tokens, private logs, private runtime data, or assets you cannot redistribute. -->
