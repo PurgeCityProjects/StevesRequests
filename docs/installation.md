@@ -1,200 +1,61 @@
 # Installation
 
-This page documents the verified current deployment shape for SteveRequests and the public ZIP release model established in the private development workspace.
+This guide covers the public Windows release of Steve's Music Requests.
 
-Official releases should be downloaded only from:
+## Requirements
 
-<https://github.com/PurgeCityProjects/StevesRequests/releases>
+- 64-bit Windows.
+- OBS Studio, if you want browser-source overlays.
+- Stock Mixxx installed separately, if you want Mixxx request and Now Playing workflows.
+- A Twitch channel and Twitch authorization for chat, Channel Points, or EventSub features.
+- A local music-library folder for song requests.
 
-No public release has been published yet. Do not use private development checkout paths or private database contents as an installation method.
+## Install With The Installer
 
-## Supported Platform Status
+1. Download `Steves-Music-Requests-<version>-x64-win.exe` from GitHub Releases.
+2. Run the installer.
+3. Choose the install location.
+4. Keep Desktop and Start Menu shortcuts enabled unless you do not want them.
+5. Launch Steve's Music Requests from the installer, Desktop shortcut, or Start Menu.
 
-The documented operator workflow is currently Windows-oriented.
+## Zip Fallback
 
-Verified runtime components:
+If Windows or antivirus blocks the installer:
 
-- Windows 10/11 with PowerShell for the documented operator workflow.
-- Python 3.11 or newer.
-- PostgreSQL, with the development environment using PostgreSQL 18.
-- Python dependencies installed from `api/requirements.txt` in the release artifact.
-- LSL scripts deployed into Second Life/OpenSim objects for in-world device behavior.
+1. Download `Steves-Music-Requests-<version>-x64-win.zip`.
+2. Extract it to a normal user-writable folder.
+3. Run `StevesMusicRequests.exe`.
 
-TODO: OWNER REVIEW REQUIRED - Confirm whether Linux hosting, Docker, managed PostgreSQL, or other deployment targets are officially supported.
+The installer is preferred for normal use.
 
-## Release Artifact
+## First Launch Setup
 
-The verified public artifact format is a versioned ZIP source distribution generated from the private development workspace. The candidate artifact built during release-process validation included:
+1. Open Steve's Music Requests.
+2. Connect your Twitch channel and complete Twitch authorization.
+3. Choose and scan your music library.
+4. Leave Mixxx mode on stock Mixxx unless you are specifically testing another bridge mode.
+5. In OBS, add Browser Sources for the URLs shown by Steve.
+6. For Now Playing, use the compact source size shown by Steve. The default is `640 x 150`; do not fit it to the full OBS canvas.
+7. Add user-provided character assets only if you use Character Output.
 
-- `api/main.py`
-- `api/requirements.txt`
-- `api/.env.example`
-- `sql/`
-- `manifests/`
-- `lsl/`
-- public install/update/uninstall/release docs
-- `VERSION.txt`
-- `RELEASE_CONTENTS.txt`
+Requests remain disabled until required Twitch setup is complete.
 
-The candidate audit verified that the package excluded Git history, real `.env` files, live database data, database dumps, logs, caches, virtual environments, patch backups, generated internal artifact packs, and known private secret patterns.
+## Runtime Data
 
-## Configuration Required
+Installed builds keep user runtime data outside the installed application directory. This includes setup, Twitch authorization, config, logs, reports, browser session data, and user-selected assets.
 
-The backend reads configuration from environment variables, with `.env` support through `python-dotenv`. Public releases should include `api/.env.example`; operators copy it to `api/.env` and fill in deployment-specific values.
-
-Verified configuration names include:
-
-- `DB_HOST`
-- `DB_PORT`
-- `DB_NAME`
-- `DB_USER`
-- `DB_PASSWORD`
-- `API_WRITE_KEY`
-- `MANAGER_API_KEY`
-- `NETWORK_ID`
-- `HEARTBEAT_TIMEOUT_SECONDS`
-- `PRESENCE_TIMEOUT_SECONDS`
-- `STALE_CLOSE_INTERVAL_SECONDS`
-- `DEFAULT_DEVICE_TYPE`
-- `MONTHLY_INCOME_REPORT_ENABLED`
-- `MONTHLY_FUNDING_GOAL_L`
-- `MONTHLY_REPORT_DISCORD_WEBHOOK_URL`
-- `DISCORD_PUBLIC_KEY`
-- `DISCORD_ALLOWED_ROLE_IDS`
-- `DISCORD_ALLOWED_USER_IDS`
-- `DISCORD_APPLICATION_ID`
-- `DISCORD_GUILD_ID`
-- media stream check timeout/user-agent settings
-
-Protect API keys, manager keys, database credentials, Discord keys, Discord webhook URLs, public tunnel/deployment URLs, and any API keys copied into LSL scripts. Do not post `.env` contents in public issues.
-
-## Install Application Files
-
-1. Download the official ZIP artifact from GitHub Releases.
-2. Extract it to an installation directory, for example `C:\SteveRequests`.
-3. Open PowerShell in the extracted directory.
-4. Create a Python virtual environment:
-
-```powershell
-python -m venv .venv
-```
-
-5. Activate it:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-6. Install dependencies:
-
-```powershell
-python -m pip install --upgrade pip
-python -m pip install -r .\api\requirements.txt
-```
-
-## Configure
-
-1. Copy `api\.env.example` to `api\.env`.
-2. Fill in database settings and generated secrets.
-3. Keep `api\.env` private.
-
-Generate API secrets with a password manager or a command such as:
-
-```powershell
-python -c "import secrets; print(secrets.token_urlsafe(48))"
-```
-
-## PostgreSQL Setup
-
-Create a PostgreSQL database and user for SteveRequests. Configure `api\.env` with the database connection settings.
-
-The backend creates and upgrades many runtime tables on startup with `CREATE TABLE IF NOT EXISTS` and `ALTER TABLE` logic in `api/main.py`. The v2 updater manifest/version-map seed data is provided in the release SQL files:
-
-- `sql/PHASE_1_FASTAPI_V2_SEED_SQL_2026_04_19.sql`
-- `sql/PHASE_1_FASTAPI_V2_CONNECTION_SEED_UPDATE_2026_04_19.sql`
-
-Apply those SQL files after schema creation and before relying on the v2 updater manifest/version-map endpoints.
-
-TODO: OWNER REVIEW REQUIRED - Decide whether to keep the current phase-named SQL files or rename them into a stable public migration sequence before the first real release.
-
-## Launch
-
-From the extracted release directory:
-
-```powershell
-cd .\api
-..\.venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
-```
-
-If the virtual environment is already activated, this equivalent command can be used from `api`:
-
-```powershell
-python -m uvicorn main:app --host 127.0.0.1 --port 8000
-```
-
-## Verify
-
-In another PowerShell window:
-
-```powershell
-Invoke-RestMethod http://127.0.0.1:8000/health
-Invoke-RestMethod http://127.0.0.1:8000/version
-```
-
-The health endpoint should return `ok: true`, `app_name: SteveRequests`, and the configured application version.
-
-## LSL / Device Setup
-
-The release package includes LSL scripts under `lsl/` grouped by script family. Operators must deploy the relevant scripts into Second Life/OpenSim objects and configure the object connection URL/API key for the backend deployment.
-
-The development source was changed so release LSL scripts use placeholders instead of hard-coded production endpoint/key values. Operators must set deployment-specific values before in-world use.
-
-## Network / Firewall
-
-The backend must be reachable by the in-world objects. Localhost-only startup is appropriate for local testing, but production or in-world use requires a reachable HTTPS endpoint or tunnel configured by the operator.
-
-Do not publish private tunnel URLs or API keys in public issues.
+The app can move the runtime folder from Settings > Advanced / Diagnostics > Choose Runtime Folder. The selected folder should be outside the installed app folder so updates and uninstall do not remove user data.
 
 ## Update
 
-Use one update process: install the next official ZIP release over application files while preserving operator-owned configuration, secrets, PostgreSQL data, backups, logs, and service definitions.
+1. Close Steve's Music Requests.
+2. Install the new official release over the previous app version.
+3. Launch Steve and confirm Twitch, Mixxx, OBS outputs, and Now Playing still work.
 
-At a high level:
-
-1. Back up PostgreSQL and `api/.env`.
-2. Stop the backend.
-3. Extract the new release.
-4. Replace application files while preserving configuration/secrets.
-5. Reinstall dependencies from `api/requirements.txt`.
-6. Apply release-specific SQL migrations or seed updates.
-7. Restart and verify `/health` and `/version`.
-8. Deploy updated LSL scripts if release notes require them.
-
-TODO: OWNER REVIEW REQUIRED - Define formal supported-version and rollback policy before first public release.
+Updates should preserve runtime data.
 
 ## Uninstall
 
-Stop the backend, then remove application files if they are no longer needed.
+Use Windows Apps & Features or the Start Menu uninstaller.
 
-Treat these separately:
-
-- application files and local virtual environment
-- `api/.env` and other secrets
-- PostgreSQL database/data/backups
-- backend/PostgreSQL/service logs
-- deployed in-world LSL scripts
-
-Dropping the PostgreSQL database is destructive. Back it up first if records may be needed later.
-
-## Troubleshooting
-
-If installation or startup fails, open a bug report and include:
-
-- SteveRequests version or release artifact name.
-- Operating system or hosting environment.
-- Backend startup command or service type.
-- PostgreSQL version and connection error text, with passwords removed.
-- Whether the issue involves backend startup, database access, in-world object communication, Discord integration, media stream checks, reporting, or LSL deployment.
-- Relevant logs with secrets and personal information removed.
-
-Do not include API keys, manager keys, database passwords, Discord webhook URLs, Discord public keys, tunnel URLs tied to private deployments, avatar data that is not needed for the report, full private database dumps, or full `.env` files.
+Uninstall removes installed app files. Runtime data is preserved so you can submit diagnostics or reinstall without losing setup state.
