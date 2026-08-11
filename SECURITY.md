@@ -16,16 +16,39 @@ TODO: OWNER REVIEW REQUIRED - Add supported version information after the first 
 | ------- | --------- |
 | No public release yet | Not applicable |
 
+## Verified Security-Sensitive Areas
+
+The current implementation is a backend service with authenticated write/admin endpoints, a PostgreSQL database, optional Discord integration, media stream checks, and Second Life/OpenSim object communication.
+
+Protect the following configuration and runtime data:
+
+- Backend API keys, including `API_WRITE_KEY` and `MANAGER_API_KEY`.
+- Database credentials and PostgreSQL data directories/backups.
+- `.env` files and environment variable dumps.
+- Discord webhook URLs and Discord integration configuration.
+- Public tunnel URLs or deployment URLs used to expose private backend instances.
+- Device live claim tokens, runtime object keys, and API configuration embedded in in-world scripts.
+- Logs or database exports containing avatar identifiers, names, payment/accounting records, session data, rental data, or device state.
+
+## Backend Exposure
+
+The backend exposes HTTP API endpoints for in-world scripts and operator/admin workflows. Write and manager/report endpoints require API-key headers in the implementation, but deployment operators are still responsible for protecting the backend URL, API keys, database, and hosting environment.
+
+If a local development backend is exposed through a tunnel or public URL, treat that URL and its API key as sensitive. Rotate keys if they are posted publicly or shared with untrusted parties.
+
 ## Public Issues
 
 Public GitHub Issues may be used for general bugs and feature requests, but they should not contain:
 
 - Exploit details.
-- Secrets or credentials.
-- Private account data.
-- Private logs containing sensitive values.
+- API keys, manager keys, database credentials, webhook URLs, or OAuth-style secrets.
+- Private account data or private avatar/payment/session/rental records.
+- Full logs containing sensitive values.
+- Database dumps or backups.
 - Personal information.
 
 ## Security Updates
 
 Security fixes should be documented in GitHub Releases and [CHANGELOG.md](CHANGELOG.md) when appropriate, without exposing unnecessary exploit details.
+
+TODO: OWNER REVIEW REQUIRED - Confirm whether GitHub private vulnerability reporting will be enabled for this repository.
